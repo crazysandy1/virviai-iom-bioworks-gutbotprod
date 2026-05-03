@@ -1,0 +1,826 @@
+[
+  {
+    "food_name": "Quinoa Peas Moong Jowar",
+    "recommendation": "YES",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium Reduced: Blautia"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "White rice Buckwheat",
+    "recommendation": "YES",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium Reduced: Blautia"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "Curcumin Garlic",
+    "recommendation": "YES",
+    "food_group": "SPICES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes Reduced: Prevotella"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "Kiwi Papaya Apple Red grape",
+    "recommendation": "YES",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Anaerostipes"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "Chokeberry Pomegranate Wild blueberry Orange",
+    "recommendation": "YES",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Anaerostipes"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "White grape",
+    "recommendation": "YES",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Anaerostipes"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 17
+  },
+  {
+    "food_name": "Collinsella",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Coprococcus",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Tomato Oyster mushroom Asparagus Onion",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Jerusalem",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Capsicum Lady's finger Green peas",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "artichoke",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Carrot",
+    "recommendation": "YES",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Anaerostipes",
+      "Faecalibacterium",
+      "Bacteroides Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Pistachios",
+    "recommendation": "YES",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Bifidobacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 18
+  },
+  {
+    "food_name": "Coconut milk Fresh cream Ghee",
+    "recommendation": "YES",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Bifidobacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 19
+  },
+  {
+    "food_name": "Mackerel Sardine Herring Trout",
+    "recommendation": "YES",
+    "food_group": "MEAT, FISH & POULTRY",
+    "increases_bacteria": [
+      "Bacteroides Reduced: Collinsella"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 19
+  },
+  {
+    "food_name": "Grape fruit juice Green tea Orange juice Beetroot juice",
+    "recommendation": "YES",
+    "food_group": "BEVERAGES",
+    "increases_bacteria": [
+      "Bifidobacterium Reduced: Prevotella"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Oolong tea",
+    "recommendation": "YES",
+    "food_group": "BEVERAGES",
+    "increases_bacteria": [
+      "Bifidobacterium Reduced: Prevotella"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Collinsella",
+    "recommendation": "YES",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium",
+      "Anaerostipes Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Whey protein Popcorn Soybean oil Psyllium",
+    "recommendation": "YES",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium",
+      "Anaerostipes Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Olive oil Guar gum Honey Cane sugar",
+    "recommendation": "YES",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium",
+      "Anaerostipes Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Kefir Chicory Blueberry juice",
+    "recommendation": "YES",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium",
+      "Anaerostipes Reduced:"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 20
+  },
+  {
+    "food_name": "Anaerostipes",
+    "recommendation": "Reduce",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Kidney beans Oats Barley Rye",
+    "recommendation": "Reduce",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Pinto beans Soya beans Brown rice Wheat",
+    "recommendation": "Reduce",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Chickpeas Tapioca Corn",
+    "recommendation": "Reduce",
+    "food_group": "GRAINS & PULSES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Strawberry Rhubarb Raspberry Avocado",
+    "recommendation": "Reduce",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Prevotella Reduced: Bifidobacterium",
+      "Dialister",
+      "Faecalibacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Mango Apricot Blueberry Blackberry",
+    "recommendation": "Reduce",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Prevotella Reduced: Bifidobacterium",
+      "Dialister",
+      "Faecalibacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Cantaloupe Banana Cherry",
+    "recommendation": "Reduce",
+    "food_group": "FRUITS",
+    "increases_bacteria": [
+      "Prevotella Reduced: Bifidobacterium",
+      "Dialister",
+      "Faecalibacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Faecalibacterium",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Potato Collard green Cabbage Sweet potato",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Amaranth Cauliflower Butternut squash Cassava",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Sprout Mushroom Lettuce Leek",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Yam Cucumber Kale Red pepper",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Romaine lettuce Broccoli Brussel sprout Shitake mushroom",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Spinach",
+    "recommendation": "Reduce",
+    "food_group": "VEGETABLES",
+    "increases_bacteria": [
+      "Prevotella",
+      "Fusicatenibacter Reduced: Bifidobacterium",
+      "Bacteroides",
+      "Dialister"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 21
+  },
+  {
+    "food_name": "Bifidobacterium",
+    "recommendation": "Reduce",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus",
+      "Bifidobacterium",
+      "Bacteroides Reduced: Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Faecalibacterium",
+    "recommendation": "Reduce",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus",
+      "Bifidobacterium",
+      "Bacteroides Reduced: Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Anaerostipes",
+    "recommendation": "Reduce",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus",
+      "Bifidobacterium",
+      "Bacteroides Reduced: Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Peanuts Prunes Raisins Dates",
+    "recommendation": "Reduce",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus",
+      "Bifidobacterium",
+      "Bacteroides Reduced: Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Walnuts Almonds",
+    "recommendation": "Reduce",
+    "food_group": "DRY FRUITS AND NUTS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus",
+      "Bifidobacterium",
+      "Bacteroides Reduced: Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Dialister",
+    "recommendation": "Reduce",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Blautia",
+      "Fusicatenibacter",
+      "Prevotella Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Faecalibacterium",
+    "recommendation": "Reduce",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Blautia",
+      "Fusicatenibacter",
+      "Prevotella Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Yoghurt Butter Milk Cheese",
+    "recommendation": "Reduce",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Blautia",
+      "Fusicatenibacter",
+      "Prevotella Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Skim milk Sour cream Soy drink Tofu",
+    "recommendation": "Reduce",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Blautia",
+      "Fusicatenibacter",
+      "Prevotella Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Mozzarella cheese Cheddar cheese",
+    "recommendation": "Reduce",
+    "food_group": "DAIRY AND SUBSTITUTES",
+    "increases_bacteria": [
+      "Blautia",
+      "Fusicatenibacter",
+      "Prevotella Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 22
+  },
+  {
+    "food_name": "Dialister",
+    "recommendation": "Reduce",
+    "food_group": "MEAT, FISH & POULTRY",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Bacteroides",
+    "recommendation": "Reduce",
+    "food_group": "MEAT, FISH & POULTRY",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Eggs Salmon Tuna",
+    "recommendation": "Reduce",
+    "food_group": "MEAT, FISH & POULTRY",
+    "increases_bacteria": [
+      "Prevotella",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Coffee Black tea",
+    "recommendation": "Reduce",
+    "food_group": "BEVERAGES",
+    "increases_bacteria": [
+      "Prevotella"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Bacteroides",
+    "recommendation": "Reduce",
+    "food_group": "SEEDS",
+    "increases_bacteria": [
+      "Coprococcus",
+      "Prevotella Reduced: Bifidobacterium",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Flax seeds Sunflower seeds Chia seeds",
+    "recommendation": "Reduce",
+    "food_group": "SEEDS",
+    "increases_bacteria": [
+      "Coprococcus",
+      "Prevotella Reduced: Bifidobacterium",
+      "Faecalibacterium"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 23
+  },
+  {
+    "food_name": "Faecalibacterium",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Whole wheat",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Peanut butter Arrowroot Whole grain bread",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "pasta",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Quiche Red wine White bread Granola",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Fish oil",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Palm oil Coconut oil Fast food",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "supplement",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  },
+  {
+    "food_name": "Canola oil Nutritional yeast Kimchi",
+    "recommendation": "Reduce",
+    "food_group": "OTHERS",
+    "increases_bacteria": [
+      "Prevotella",
+      "Blautia",
+      "Coprococcus Reduced: Bifidobacterium",
+      "Bacteroides"
+    ],
+    "reduces_bacteria": [],
+    "report_scope": "SEnS",
+    "source_page": 24
+  }
+]

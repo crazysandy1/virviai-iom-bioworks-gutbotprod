@@ -1,0 +1,145 @@
+[
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Faecalibacterium",
+    "direction": "increase",
+    "current_abundance": 15.2,
+    "optimal_abundance": 18.09,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Bacteroides",
+    "direction": "increase",
+    "current_abundance": 6.16,
+    "optimal_abundance": 7.52,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Bifidobacterium",
+    "direction": "increase",
+    "current_abundance": 3.47,
+    "optimal_abundance": 4.51,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Dialister",
+    "direction": "increase",
+    "current_abundance": 3.44,
+    "optimal_abundance": 4.47,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Anaerostipes",
+    "direction": "increase",
+    "current_abundance": 2.92,
+    "optimal_abundance": 3.8,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Other SEnS bacteria to increase",
+    "direction": "increase",
+    "current_abundance": 11.67,
+    "optimal_abundance": 14.68,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Prevotella",
+    "direction": "decrease",
+    "current_abundance": 12.44,
+    "optimal_abundance": 10.82,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Blautia",
+    "direction": "decrease",
+    "current_abundance": 6.42,
+    "optimal_abundance": 5.21,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Collinsella",
+    "direction": "decrease",
+    "current_abundance": 1.85,
+    "optimal_abundance": 1.47,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Fusicatenibacter",
+    "direction": "decrease",
+    "current_abundance": 1.59,
+    "optimal_abundance": 1.11,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Coprococcus",
+    "direction": "decrease",
+    "current_abundance": 1.31,
+    "optimal_abundance": 0.92,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Other SEnS bacteria to decrease",
+    "direction": "decrease",
+    "current_abundance": 4.45,
+    "optimal_abundance": 3.28,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Non SEnS bacteria",
+    "direction": "",
+    "current_abundance": 29.08,
+    "optimal_abundance": 24.12,
+    "report_scope": "SEnS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  }
+]

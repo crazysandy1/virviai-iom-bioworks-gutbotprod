@@ -1,0 +1,253 @@
+/* Compact Document Manager - Claude/ChatGPT Style */
+
+.document-manager-compact {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+/* Compact Bar - Always Visible */
+.docs-compact-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.docs-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.docs-toggle-btn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.docs-icon {
+  font-size: 0.95rem;
+}
+
+.docs-label {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.docs-chevron {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+  color: #9ca3af;
+}
+
+.docs-chevron.open {
+  transform: rotate(90deg);
+}
+
+.docs-status {
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 4px 8px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Expanded List */
+.docs-expanded-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.docs-expanded-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.docs-expanded-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.docs-expanded-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.docs-expanded-list::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.doc-compact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+  transition: all 0.2s ease;
+}
+
+.doc-compact-item:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.doc-compact-item.deselected {
+  opacity: 0.6;
+}
+
+.doc-compact-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #667eea;
+  flex-shrink: 0;
+}
+
+.doc-compact-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.doc-compact-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-compact-info {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.doc-compact-remove {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.doc-compact-remove:hover {
+  color: #ef4444;
+}
+
+.doc-compact-error {
+  padding: 8px 12px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #991b1b;
+  margin-bottom: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .docs-compact-bar {
+    padding: 6px 10px;
+    gap: 10px;
+  }
+
+  .docs-toggle-btn {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+
+  .docs-expanded-list {
+    padding: 10px;
+    gap: 6px;
+    max-height: 200px;
+  }
+
+  .doc-compact-item {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .doc-compact-name {
+    font-size: 0.85rem;
+  }
+
+  .doc-compact-info {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-compact-bar {
+    padding: 5px 8px;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .docs-toggle-btn {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+  }
+
+  .docs-label {
+    font-size: 0.8rem;
+  }
+
+  .docs-icon {
+    font-size: 0.9rem;
+  }
+
+  .docs-expanded-list {
+    padding: 8px;
+    gap: 4px;
+    max-height: 150px;
+  }
+
+  .doc-compact-item {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .doc-compact-name {
+    font-size: 0.8rem;
+  }
+
+  .doc-compact-info {
+    font-size: 0.65rem;
+  }
+
+  .doc-compact-remove {
+    font-size: 0.9rem;
+    padding: 2px 4px;
+  }
+}

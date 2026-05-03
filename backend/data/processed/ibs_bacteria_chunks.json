@@ -1,0 +1,145 @@
+[
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Dialister",
+    "direction": "increase",
+    "current_abundance": 5.08,
+    "optimal_abundance": 6.6,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Faecalibacterium",
+    "direction": "increase",
+    "current_abundance": 2.95,
+    "optimal_abundance": 3.84,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Catenibacterium",
+    "direction": "increase",
+    "current_abundance": 2.11,
+    "optimal_abundance": 2.74,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Subdoligranulum",
+    "direction": "increase",
+    "current_abundance": 0.8,
+    "optimal_abundance": 1.04,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Collinsella",
+    "direction": "increase",
+    "current_abundance": 0.48,
+    "optimal_abundance": 0.62,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Other IBS bacteria to increase",
+    "direction": "increase",
+    "current_abundance": 16.81,
+    "optimal_abundance": 17.24,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Bifidobacterium",
+    "direction": "decrease",
+    "current_abundance": 10.8,
+    "optimal_abundance": 10.77,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Blautia",
+    "direction": "decrease",
+    "current_abundance": 2.48,
+    "optimal_abundance": 2.35,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Lachnospira",
+    "direction": "decrease",
+    "current_abundance": 0.22,
+    "optimal_abundance": 0.15,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Dorea",
+    "direction": "decrease",
+    "current_abundance": 0.17,
+    "optimal_abundance": 0.12,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Roseburia",
+    "direction": "decrease",
+    "current_abundance": 0.15,
+    "optimal_abundance": 0.1,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Other IBS bacteria to decrease",
+    "direction": "decrease",
+    "current_abundance": 35.59,
+    "optimal_abundance": 35.53,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  },
+  {
+    "chunk_type": "bacteria",
+    "bacteria_name": "Non IBS bacteria",
+    "direction": "",
+    "current_abundance": 22.36,
+    "optimal_abundance": 18.9,
+    "report_scope": "IBS",
+    "metadata": {
+      "source_token": "#TID009"
+    }
+  }
+]

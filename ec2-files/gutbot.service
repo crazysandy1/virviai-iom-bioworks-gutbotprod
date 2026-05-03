@@ -1,0 +1,94 @@
+# =============================================================================
+# GutBot — systemd Service Unit
+# =============================================================================
+# Install:  sudo cp gutbot.service /etc/systemd/system/gutbot.service
+#           sudo systemctl daemon-reload
+#           sudo systemctl enable gutbot
+#           sudo systemctl start gutbot
+#
+# After updating this file:
+#           sudo systemctl daemon-reload && sudo systemctl restart gutbot
+# =============================================================================
+
+[Unit]
+Description=GutBot - AI Medical Chatbot (Gunicorn + gevent)
+Documentation=file:///home/ubuntu/gutbot/ARCHITECTURE.md
+# Start only after the network is fully up (needed for AWS Bedrock API calls)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+User=ubuntu
+Group=ubuntu
+
+# Working directory — Gunicorn resolves app:app relative to this
+WorkingDirectory=/home/ubuntu/gutbot/backend
+
+# Add the venv bin to PATH so gunicorn and python resolve correctly
+Environment="PATH=/home/ubuntu/gutbot/backend/venv/bin:/usr/local/bin:/usr/bin:/bin"
+
+# Load all environment variables from .env (AWS keys, LLM backend, etc.)
+EnvironmentFile=/home/ubuntu/gutbot/backend/.env
+
+# ── Start command ──────────────────────────────────────────────────────────────
+ExecStart=/home/ubuntu/gutbot/backend/venv/bin/gunicorn \
+    --config /home/ubuntu/gutbot/ec2-files/gunicorn.conf.py \
+    app:app
+
+# Graceful reload (SIGHUP) — re-reads config without dropping connections
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# ── Restart policy ────────────────────────────────────────────────────────────
+# Restart on any failure (crash, OOM kill, etc.)
+Restart=on-failure
+RestartSec=5s
+
+# If it fails to start 5 times within 2 minutes, stop trying and alert
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+# ── Resource limits — CRITICAL for SSH to stay accessible ────────────────────
+#
+# CPUQuota caps how much CPU the entire Gunicorn process tree can use.
+# The remaining CPU is always available for sshd, Nginx, and the kernel.
+#
+#   Instance     vCPU   CPUQuota   Effect
+#   t3.medium    2      75%        1.5 cores max; 0.5 core always free for SSH
+#   t3.large     2      75%        same
+#   t3.xlarge    4      80%        3.2 cores max; 0.8 core always free for SSH
+#
+# 100% = 1 full core. So 75% on a 2-vCPU machine = 75% of ONE core = 37.5% of total.
+# This is conservative and correct — Gunicorn is mostly I/O-bound (waiting for Bedrock),
+# so it rarely touches its CPU ceiling in normal operation.
+CPUQuota=75%
+
+# Memory hard ceiling. When hit, the OOM killer targets Gunicorn, not sshd.
+# Set to ~50% of instance RAM to leave room for OS + Nginx + SSH.
+#
+#   t3.medium  (4 GB):  MemoryMax=2G
+#   t3.large   (8 GB):  MemoryMax=4G    ← default below
+#   t3.xlarge  (16 GB): MemoryMax=8G
+#
+# CHANGE THIS LINE to match your instance before deploying:
+MemoryMax=4G
+
+# Disable swap for this service. If we hit the memory ceiling we want a fast,
+# clean OOM kill rather than slow thrashing swap that freezes the whole machine.
+MemorySwapMax=0
+
+# OOM score: higher = more likely to be killed first when RAM is low.
+# sshd defaults to -1000 (never kill). Setting Gunicorn to 300 means
+# it will be killed well before sshd if RAM becomes critically low.
+OOMScoreAdjust=300
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+# Application logs go to /var/log/gutbot/ (configured in gunicorn.conf.py).
+# systemd journal also captures stdout/stderr for `journalctl -u gutbot`.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gutbot
+
+[Install]
+# Start automatically when the system reaches multi-user mode (normal boot)
+WantedBy=multi-user.target

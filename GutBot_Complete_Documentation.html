@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GutBot — Complete Technical Documentation</title>
+<style>
+  /* ── Fonts ──────────────────────────────────────────────────────── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  /* ── Reset ──────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Base ───────────────────────────────────────────────────────── */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #1a1a2e;
+    background: #ffffff;
+  }
+
+  /* ── Page layout ────────────────────────────────────────────────── */
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+
+  /* ── Cover page ─────────────────────────────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #ffffff;
+    padding: 80px 60px;
+    page-break-after: always;
+    border-radius: 0;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #a8b4ff;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .cover h1 {
+    font-size: 52pt;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #ffffff 0%, #a8b4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-subtitle {
+    font-size: 15pt;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 48px;
+    max-width: 540px;
+  }
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 32px;
+    margin-top: 40px;
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 10.5pt;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+  .cover-tagline {
+    font-size: 11.5pt;
+    color: rgba(255,255,255,0.6);
+    margin-top: 24px;
+    max-width: 480px;
+    font-style: italic;
+  }
+
+  /* ── TOC ────────────────────────────────────────────────────────── */
+  .toc-page {
+    padding: 60px 0 40px;
+    page-break-after: always;
+  }
+  .toc-title {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #0f0c29;
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #302b63;
+  }
+  .toc-section {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+  }
+  .toc-num {
+    width: 32px;
+    font-size: 9pt;
+    color: #6b7280;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .toc-text {
+    font-size: 10.5pt;
+    color: #1a1a2e;
+  }
+  .toc-sub {
+    margin-left: 32px;
+    color: #6b7280;
+    font-size: 9.5pt;
+  }
+  .toc-group { margin-bottom: 20px; }
+  .toc-group-title {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* ── Section headings ───────────────────────────────────────────── */
+  h1.section-title {
+    font-size: 26pt;
+    font-weight: 700;
+    color: #0f0c29;
+    margin: 48px 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #302b63;
+  }
+  h2 {
+    font-size: 15pt;
+    font-weight: 600;
+    color: #1e1b4b;
+    margin: 36px 0 10px;
+  }
+  h3 {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: #312e81;
+    margin: 24px 0 8px;
+  }
+  h4 {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #374151;
+    margin: 18px 0 6px;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  ul, ol {
+    margin: 8px 0 12px 20px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+
+  /* ── Inline code ────────────────────────────────────────────────── */
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 8.5pt;
+    background: #f0f0f7;
+    color: #5b21b6;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ── Code blocks ────────────────────────────────────────────────── */
+  pre {
+    background: #1e1b4b;
+    color: #c4b5fd;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 8pt;
+    line-height: 1.55;
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin: 12px 0 18px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  /* ── Tables ─────────────────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 9.5pt;
+  }
+  thead tr {
+    background: #1e1b4b;
+    color: #ffffff;
+  }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 8.5pt;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f8f7ff; }
+  tr:hover td { background: #ede9fe; }
+
+  /* ── Callout boxes ──────────────────────────────────────────────── */
+  .callout {
+    border-left: 4px solid #6d28d9;
+    background: #f5f3ff;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 14px 0;
+  }
+  .callout.warning {
+    border-color: #d97706;
+    background: #fffbeb;
+  }
+  .callout.success {
+    border-color: #059669;
+    background: #ecfdf5;
+  }
+  .callout.danger {
+    border-color: #dc2626;
+    background: #fef2f2;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    color: #4c1d95;
+  }
+  .callout.warning .callout-title { color: #92400e; }
+  .callout.success .callout-title { color: #065f46; }
+  .callout.danger .callout-title { color: #991b1b; }
+
+  /* ── Badge chips ────────────────────────────────────────────────── */
+  .badge {
+    display: inline-block;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
+  }
+  .badge-new { background: #dcfce7; color: #166534; }
+  .badge-fix { background: #fee2e2; color: #991b1b; }
+  .badge-sec { background: #fef9c3; color: #854d0e; }
+  .badge-arch { background: #dbeafe; color: #1e40af; }
+
+  /* ── Section break ──────────────────────────────────────────────── */
+  .page-break { page-break-before: always; }
+
+  /* ── Divider ────────────────────────────────────────────────────── */
+  hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 28px 0;
+  }
+
+  /* ── Architecture diagram (ASCII art) ──────────────────────────── */
+  .arch-box {
+    background: #0f172a;
+    color: #94a3b8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    line-height: 1.6;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin: 14px 0 22px;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  /* ── Signal table rows ──────────────────────────────────────────── */
+  .signal-score-pos { color: #059669; font-weight: 700; }
+  .signal-score-neg { color: #dc2626; font-weight: 700; }
+
+  /* ── Print ──────────────────────────────────────────────────────── */
+  @media print {
+    body { font-size: 9.5pt; }
+    .cover { min-height: auto; padding: 60px 40px; }
+    .cover h1 { font-size: 40pt; }
+    pre { font-size: 7.5pt; }
+    .arch-box { font-size: 7pt; }
+    .page-break { page-break-before: always; }
+    table { page-break-inside: avoid; }
+    h1.section-title, h2, h3 { page-break-after: avoid; }
+    a { text-decoration: none; color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- COVER PAGE                                                        -->
+<!-- ================================================================ -->
+<div class="cover">
+  <div class="cover-badge">Technical Documentation — v1.0</div>
+  <h1>GutBot</h1>
+  <p class="cover-subtitle">Medical RAG Chatbot — Complete Feature &amp; Implementation Reference</p>
+  <p class="cover-tagline">
+    A production-grade AI assistant that answers questions about your gut-health
+    and microbiome lab reports using Retrieval-Augmented Generation.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Product</div>
+      <div class="cover-meta-value">GutBot / IOM BioWorks</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Backend</div>
+      <div class="cover-meta-value">Flask · FAISS · SentenceTransformers · AWS Bedrock</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Frontend</div>
+      <div class="cover-meta-value">React 19 · Vite · Axios</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Deployment</div>
+      <div class="cover-meta-value">AWS EC2 · Nginx · Gunicorn · systemd</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Document Date</div>
+      <div class="cover-meta-value">May 2026</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Status</div>
+      <div class="cover-meta-value">Production-Ready</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- TABLE OF CONTENTS                                                 -->
+<!-- ================================================================ -->
+<div class="page-wrap">
+<div class="toc-page">
+  <div class="toc-title">Table of Contents</div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">Overview</div>
+    <div class="toc-section"><span class="toc-num">1.</span><span class="toc-text">Project Overview &amp; Purpose</span></div>
+    <div class="toc-section"><span class="toc-num">2.</span><span class="toc-text">Technology Stack</span></div>
+    <div class="toc-section"><span class="toc-num">3.</span><span class="toc-text">System Architecture</span></div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">Core Features</div>
+    <div class="toc-section"><span class="toc-num">4.</span><span class="toc-text">PDF Upload &amp; Processing Pipeline</span></div>
+    <div class="toc-section"><span class="toc-num">5.</span><span class="toc-text">Medical Document Validation Layer</span></div>
+    <div class="toc-section"><span class="toc-num">6.</span><span class="toc-text">RAG Chat Engine</span></div>
+    <div class="toc-section"><span class="toc-num">7.</span><span class="toc-text">Inference Engine &amp; Query Routing</span></div>
+    <div class="toc-section"><span class="toc-num">8.</span><span class="toc-text">Security Guard</span></div>
+    <div class="toc-section"><span class="toc-num">9.</span><span class="toc-text">Multi-Document Management</span></div>
+    <div class="toc-section"><span class="toc-num">10.</span><span class="toc-text">Conversation Isolation</span></div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">Frontend</div>
+    <div class="toc-section"><span class="toc-num">11.</span><span class="toc-text">Frontend Application Features</span></div>
+    <div class="toc-section"><span class="toc-num">12.</span><span class="toc-text">API Client &amp; Request Layer</span></div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">API Reference</div>
+    <div class="toc-section"><span class="toc-num">13.</span><span class="toc-text">REST API Endpoints</span></div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">Deployment</div>
+    <div class="toc-section"><span class="toc-num">14.</span><span class="toc-text">Local Development Setup</span></div>
+    <div class="toc-section"><span class="toc-num">15.</span><span class="toc-text">EC2 Production Deployment</span></div>
+    <div class="toc-section"><span class="toc-num">16.</span><span class="toc-text">Configuration Reference</span></div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-title">Audit &amp; Changes</div>
+    <div class="toc-section"><span class="toc-num">17.</span><span class="toc-text">Bug Fixes Implemented</span></div>
+    <div class="toc-section"><span class="toc-num">18.</span><span class="toc-text">Security Hardening</span></div>
+    <div class="toc-section"><span class="toc-num">19.</span><span class="toc-text">Production Readiness Assessment</span></div>
+    <div class="toc-section"><span class="toc-num">20.</span><span class="toc-text">Known Limitations &amp; Future Work</span></div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 1. PROJECT OVERVIEW                                               -->
+<!-- ================================================================ -->
+<h1 class="section-title">1. Project Overview &amp; Purpose</h1>
+
+<p>
+  GutBot is a production-grade AI chatbot built for <strong>IOM BioWorks</strong>. It allows patients and clinicians
+  to upload medical PDF documents — gut-health reports, microbiome analyses, blood panels, discharge summaries — and
+  ask natural-language questions about them. The system retrieves the most relevant passages from the document and
+  passes them to a large-language model (AWS Bedrock) to generate a grounded, cited answer.
+</p>
+
+<h2>What makes GutBot different from a generic chatbot</h2>
+<ul>
+  <li><strong>Document-grounded answers:</strong> Every response is rooted in passages from the user's own uploaded PDF, not generic web knowledge.</li>
+  <li><strong>Per-user session isolation:</strong> Each browser tab has a unique <code>conversationId</code>. Documents uploaded in one session are completely invisible to every other session.</li>
+  <li><strong>Medical-only gate:</strong> A multi-signal heuristic validator rejects non-medical PDFs before they enter the processing pipeline — no invoices, legal contracts, or code files can be indexed.</li>
+  <li><strong>Smart query routing:</strong> An inference engine classifies every question before touching FAISS. Greetings, out-of-domain questions, and general medical queries are answered directly by the LLM without a vector search, saving latency and cost.</li>
+</ul>
+
+<h2>Primary use cases</h2>
+<ul>
+  <li>Patient wants to understand their IOM SEnS / IBS microbiome report</li>
+  <li>Clinician wants to quickly query a discharge summary or blood panel</li>
+  <li>Health professional comparing two lab reports from the same patient</li>
+</ul>
+
+
+<!-- ================================================================ -->
+<!-- 2. TECH STACK                                                     -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">2. Technology Stack</h1>
+
+<table>
+  <thead><tr><th>Layer</th><th>Technology</th><th>Version / Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Backend framework</td><td>Flask</td><td>Python 3.10+</td></tr>
+    <tr><td>Vector store</td><td>FAISS (Facebook AI)</td><td>In-memory, per-conversation index</td></tr>
+    <tr><td>Embeddings</td><td>SentenceTransformers</td><td><code>all-MiniLM-L6-v2</code> — 384-dim, runs on CPU or GPU</td></tr>
+    <tr><td>LLM backend</td><td>AWS Bedrock</td><td>Mistral 7B Instruct v0.2 (default) or Claude Haiku</td></tr>
+    <tr><td>PDF parsing</td><td>PyPDF2</td><td>Text extraction only</td></tr>
+    <tr><td>CORS</td><td>flask-cors</td><td>Production whitelist, dev wildcard</td></tr>
+    <tr><td>Frontend</td><td>React 19 + Vite</td><td>SPA with react-markdown, axios, uuid, date-fns</td></tr>
+    <tr><td>HTTP server</td><td>Gunicorn + gevent</td><td>1 worker, 100 greenlets — required for session isolation</td></tr>
+    <tr><td>Reverse proxy</td><td>Nginx</td><td>Rate limiting, gzip, static file serving</td></tr>
+    <tr><td>Process manager</td><td>systemd</td><td>Auto-restart, CPU/RAM quotas, SSH-safe</td></tr>
+    <tr><td>Cloud platform</td><td>AWS EC2</td><td>Ubuntu 22.04 LTS — t3.large or t3.xlarge recommended</td></tr>
+  </tbody>
+</table>
+
+<h2>AWS Bedrock Model Options</h2>
+<table>
+  <thead><tr><th>Model ID</th><th>Speed</th><th>Quality</th><th>Recommended for</th></tr></thead>
+  <tbody>
+    <tr><td><code>mistral.mistral-7b-instruct-v0:2</code></td><td>Fast</td><td>Good</td><td>Default — best cost/speed balance</td></tr>
+    <tr><td><code>anthropic.claude-haiku-4-5-20251001-v1:0</code></td><td>Very fast</td><td>Very good</td><td>High-volume, cost-sensitive</td></tr>
+    <tr><td><code>anthropic.claude-sonnet-4-5-20251001-v1:0</code></td><td>Medium</td><td>Excellent</td><td>Premium quality responses</td></tr>
+    <tr><td><code>meta.llama3-8b-instruct-v1:0</code></td><td>Medium</td><td>Good</td><td>Open-weight alternative</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<!-- 3. ARCHITECTURE                                                   -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">3. System Architecture</h1>
+
+<h2>High-level request flow</h2>
+<div class="arch-box">┌─────────────────────────────────────────────────────────────┐
+│                        USER BROWSER                         │
+│  React SPA  ──  Vite dev server (local) / Nginx (prod)     │
+└──────────────────────────┬──────────────────────────────────┘
+                           │  HTTP  (port 80/443)
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        NGINX                                │
+│  • Serves React build (frontend/dist/) as static files      │
+│  • Rate-limits  /upload  →  2 req/s   burst 5              │
+│  • Rate-limits  /chat    →  10 req/s  burst 20             │
+│  • Rewrites  /api/*  →  /*   then proxies to Gunicorn      │
+└──────────────────────────┬──────────────────────────────────┘
+                           │  127.0.0.1:8000
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│               GUNICORN  (1 worker, gevent)                  │
+│  • Single OS process — preserves in-memory session dict     │
+│  • 100 concurrent greenlets (gevent coroutines)             │
+│  • max_requests=500  →  auto-restarts to prevent RAM leaks  │
+└──────────────────────────┬──────────────────────────────────┘
+                           │  WSGI
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      FLASK APP  (app.py)                    │
+│                                                             │
+│  /upload ──► PDF parse ──► MedicalValidator ──► Chunker    │
+│          ──► SentenceTransformer.encode()                   │
+│          ──► FAISS IndexFlatL2 (per-conversation)          │
+│                                                             │
+│  /chat  ──► SecurityGuard ──► InferenceEngine.classify()   │
+│         ──► [SKIP_FAISS] call_llm() directly               │
+│         ──► [USE_FAISS]  encode query ──► FAISS.search(k=5)│
+│                       ──► build context ──► call_llm()     │
+│                                                             │
+│  /documents, /manage-documents, /remove-document           │
+│  (document list, toggle selection, delete)                 │
+└──────────────────────────┬──────────────────────────────────┘
+                           │  HTTPS API
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     AWS BEDROCK                             │
+│  Mistral 7B / Claude Haiku  (configurable via .env)        │
+│  Region: ap-south-1 (configurable)                         │
+└─────────────────────────────────────────────────────────────┘</div>
+
+<h2>Session isolation design</h2>
+<div class="arch-box">conversation_indices = {
+  "uuid-alice-session": {
+    "documents": {
+      "doc-uuid-1": { chunks: [...], filename: "report.pdf", selected: True },
+    },
+    "combined_index": &lt;faiss.IndexFlatL2&gt;,
+    "doc_to_chunk_mapping": { 0: ("doc-uuid-1", 0), 1: ("doc-uuid-1", 1), ... }
+  },
+  "uuid-bob-session": { ... },   ← completely separate
+}
+</div>
+
+<div class="callout warning">
+  <div class="callout-title">Critical Architecture Constraint</div>
+  Gunicorn <strong>must run with exactly 1 worker process</strong>.
+  <code>conversation_indices</code> is a plain Python dictionary in process memory.
+  Multiple Gunicorn workers would be separate OS processes with separate memory — User A's
+  FAISS index would silently disappear when User B's request lands on a different worker.
+  Concurrency is handled by gevent coroutines (non-blocking I/O) within the single worker.
+</div>
+
+<h2>Frontend directory structure</h2>
+<pre><code>frontend/
+├── src/
+│   ├── App.jsx                  ← root component, conversation + upload logic
+│   ├── App.css
+│   ├── main.jsx                 ← React entry point
+│   ├── index.css
+│   ├── components/
+│   │   ├── ChatContainer.jsx    ← renders message history
+│   │   ├── ChatInput.jsx        ← send message, keyboard shortcut
+│   │   ├── DocumentManager.jsx  ← document list, toggle, remove
+│   │   ├── Header.jsx
+│   │   ├── LoadingSpinner.jsx
+│   │   ├── Sidebar.jsx          ← conversation list
+│   │   ├── UploadZone.jsx       ← drag-drop or click upload
+│   │   └── ErrorBoundary.jsx    ← React error boundary
+│   ├── services/
+│   │   └── apiClient.js         ← primary API client (dedup, retry, cache)
+│   └── utils/
+│       ├── api.js               ← legacy axios helpers
+│       ├── helpers.js
+│       ├── storage.js
+│       └── validation.js
+├── .env                         ← VITE_API_URL (local dev)
+├── .env.production              ← VITE_API_URL=/api  (production build)
+├── vite.config.js               ← dev proxy → localhost:8000
+└── package.json</code></pre>
+
+<h2>Backend directory structure</h2>
+<pre><code>virviai-iom-bioworks-gutbotprod/
+├── backend/
+│   ├── app.py                   ← Flask application (main entry point)
+│   ├── llm_config.py            ← LLM backends, InferenceEngine, SecurityGuard
+│   ├── medical_doc_validator.py ← Medical document validator (NEW)
+│   ├── requirements.txt
+│   ├── start.sh                 ← launch script
+│   ├── .env                     ← credentials (never commit)
+│   ├── .env.example             ← template
+│   ├── uploads/                 ← uploaded PDFs (temporary)
+│   ├── indices/                 ← pre-built static FAISS indices
+│   ├── data/
+│   │   ├── processed/           ← JSON chunk files
+│   │   └── raw/                 ← raw Excel/JSON source data
+│   └── build_*.py               ← index-building scripts (offline)
+├── ec2-files/
+│   ├── gunicorn.conf.py         ← Gunicorn production config
+│   ├── gutbot.service           ← systemd service unit
+│   ├── nginx.conf               ← Nginx main config (SSH-safe)
+│   ├── nginx-gutbot             ← Nginx site config (rate limits, routing)
+│   ├── deploy.sh                ← one-shot deployment script
+│   └── SETUP.md                 ← pre-flight checklist
+├── README.md
+├── ARCHITECTURE.md
+├── RUN_GUIDE.md
+└── EC2_SETUP_GUIDE.md</code></pre>
+
+
+<!-- ================================================================ -->
+<!-- 4. PDF UPLOAD & PROCESSING                                        -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">4. PDF Upload &amp; Processing Pipeline</h1>
+
+<p>
+  When a user uploads a PDF, the backend executes a strict 7-step pipeline before the document
+  becomes searchable.
+</p>
+
+<h2>Processing steps</h2>
+<ol>
+  <li><strong>File validation</strong> — must be <code>.pdf</code> extension, ≤ 50 MB, non-empty filename</li>
+  <li><strong>Filename sanitisation</strong> — <code>werkzeug.secure_filename()</code> strips path traversal characters (<code>../</code>, <code>/etc/passwd</code>, etc.)</li>
+  <li><strong>Text extraction</strong> — PyPDF2 reads every page; rejects blank / corrupted PDFs</li>
+  <li><strong>Medical document validation</strong> — heuristic scorer (see Section 5) rejects non-medical content; file is deleted from disk if rejected</li>
+  <li><strong>Chunking</strong> — text is split into 500-character chunks with no overlap</li>
+  <li><strong>Embedding generation</strong> — SentenceTransformers encodes all chunks into 384-dimensional vectors</li>
+  <li><strong>FAISS indexing</strong> — vectors are added to the conversation's <code>IndexFlatL2</code>; a global chunk-to-document mapping is updated</li>
+</ol>
+
+<h2>Upload endpoint — request &amp; response</h2>
+<pre><code>POST /upload
+Content-Type: multipart/form-data
+
+Fields:
+  file          (File)    — the PDF
+  conversationId (string) — UUID identifying the session
+
+Response 200:
+{
+  "message": "File uploaded and indexed successfully",
+  "chunks":  42,
+  "source":  "my_report.pdf",
+  "docId":   "3f8a1c9e-...",
+  "status":  "success"
+}
+
+Response 400 (non-medical):
+{
+  "error": "This does not appear to be a medical or health-related document. ..."
+}
+
+Response 400 (bad file):
+{ "error": "Only PDF files are supported" }
+{ "error": "No text could be extracted from PDF" }
+{ "error": "Invalid filename" }</code></pre>
+
+<h2>Front-end upload flow</h2>
+<ul>
+  <li>Drag-and-drop or file-picker via <code>UploadZone</code> component</li>
+  <li>Client-side validation: PDF MIME type check, 50 MB limit</li>
+  <li>Upload progress bar driven by <code>onUploadProgress</code> axios callback</li>
+  <li>Supports multiple documents per conversation (each gets its own UUID)</li>
+  <li>After the first upload, UI switches to a compact "Add Another Document" button</li>
+  <li>An <code>AbortController</code> is wired up so uploads can be cancelled mid-flight</li>
+</ul>
+
+
+<!-- ================================================================ -->
+<!-- 5. MEDICAL DOCUMENT VALIDATION                                    -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">5. Medical Document Validation Layer</h1>
+
+<span class="badge badge-new">NEW FEATURE</span>
+<p style="margin-top:8px">
+  <code>backend/medical_doc_validator.py</code> — Implemented as a standalone class with zero dependencies
+  beyond the Python standard library. It runs synchronously in the upload pipeline with no LLM calls,
+  no network requests, and no disk I/O.
+</p>
+
+<h2>Design philosophy</h2>
+<p>
+  A multi-signal heuristic scoring approach is used. Each signal fires independently and contributes
+  a fixed weight to the total score. A document must score <strong>≥ 4</strong> to be accepted.
+  This prevents gaming (a single medical word is insufficient) while still accepting diverse real-world
+  document formats.
+</p>
+
+<h2>Scoring signals</h2>
+<table>
+  <thead><tr><th>#</th><th>Signal</th><th>Trigger condition</th><th>Weight</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Lab values with units</td>
+      <td>Regex matches numbers followed by medical units (mg/dL, mmol/L, IU/L, etc.)</td>
+      <td class="signal-score-pos">+3 (≥2 hits) / +1 (1 hit)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Reference / normal ranges</td>
+      <td>Patterns like <em>normal: 4.0–10.0</em>, <em>ref range 70–99</em></td>
+      <td class="signal-score-pos">+3</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Patient / sample identifier</td>
+      <td>Patient ID, MRN, Date of Birth, Accession No, Collection Date, etc.</td>
+      <td class="signal-score-pos">+3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Report header keyword</td>
+      <td>Lab Report, Discharge Summary, Microbiome Report, IOM Report, etc.</td>
+      <td class="signal-score-pos">+4</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Microbiome / gut-health terms</td>
+      <td>Firmicutes, Lactobacillus, dysbiosis, SCFA, IBS score, GutHeal, etc.</td>
+      <td class="signal-score-pos">+4 (≥2 hits) / +2 (1 hit)</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Medical test abbreviations</td>
+      <td>CBC, HbA1c, TSH, WBC, HDL, LDL, eGFR, CRP, INR, etc.</td>
+      <td class="signal-score-pos">+2 (≥2 hits) / +1 (1 hit)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Medical keyword density</td>
+      <td>160+ keywords: diagnosis, blood, glucose, cholesterol, hospital, etc.</td>
+      <td class="signal-score-pos">+1 each, capped at +6</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Non-medical domain patterns</td>
+      <td>Invoice numbers, GST codes, legal clauses (<em>whereas, the parties</em>), source code (<code>def func()</code>)</td>
+      <td class="signal-score-neg">−3 each</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Documents accepted (examples)</h2>
+<ul>
+  <li>IOM SEnS / IBS microbiome kit reports</li>
+  <li>Blood panel reports (CBC, CMP, HbA1c, lipid profile)</li>
+  <li>Lab test results with reference ranges</li>
+  <li>Discharge summaries and clinical notes</li>
+  <li>Prescriptions with medication dosages</li>
+  <li>Radiology reports</li>
+  <li>Health certificates and medical assessments</li>
+  <li>Medical research papers</li>
+</ul>
+
+<h2>Documents rejected (examples)</h2>
+<ul>
+  <li>Invoices and purchase orders</li>
+  <li>Legal contracts and NDAs</li>
+  <li>Source code files exported to PDF</li>
+  <li>Business presentations (low medical density)</li>
+  <li>CVs and resumes</li>
+</ul>
+
+<h2>Analysis window</h2>
+<p>
+  Only the first <strong>8,000 characters</strong> are analysed — enough to cover the cover page and
+  first section of any real-world document. This keeps validation under 1 ms regardless of PDF length.
+</p>
+
+<div class="callout success">
+  <div class="callout-title">No LLM Cost</div>
+  The validator runs entirely with Python regex. Zero API calls are made for rejected documents.
+  Rejected PDFs are also deleted from disk immediately to avoid orphaned files.
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 6. RAG CHAT ENGINE                                                -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">6. RAG Chat Engine</h1>
+
+<h2>What is RAG?</h2>
+<p>
+  Retrieval-Augmented Generation (RAG) is a technique where, before calling the LLM, the system first
+  <em>retrieves</em> relevant passages from a knowledge base (here, the user's uploaded PDFs) and
+  injects them as context into the LLM prompt. This grounds the answer in real document content
+  and prevents hallucination.
+</p>
+
+<h2>FAISS vector search</h2>
+<ul>
+  <li>Index type: <code>faiss.IndexFlatL2</code> — exact L2 (Euclidean) distance search, no approximation</li>
+  <li>Embedding model: <code>all-MiniLM-L6-v2</code> — 384 dimensions, excellent semantic understanding</li>
+  <li>Top-k: <code>k = min(5, total_chunks)</code> — retrieves the 5 most relevant chunks</li>
+  <li>Each chunk is 500 characters of raw extracted text</li>
+  <li>Source file is tracked for each chunk, enabling citations in the LLM prompt</li>
+</ul>
+
+<h2>Context assembly</h2>
+<p>Retrieved chunks are assembled into a structured context block:</p>
+<pre><code>[From: blood_report.pdf]
+Patient: John Doe  DOB: 12/03/1980
+Haemoglobin: 11.2 g/dL  (Reference: 13.0–17.0)
+...
+
+---
+
+[From: gut_report.pdf]
+IBS Score: 72/100  Firmicutes:Bacteroidetes ratio: 1.8
+...</code></pre>
+
+<h2>LLM prompt structure</h2>
+<p>The context + question are combined into a structured prompt sent to Bedrock. The prompt instructs the model to:</p>
+<ol>
+  <li>Answer only from the provided context</li>
+  <li>Cite which document a finding comes from</li>
+  <li>Say "I don't have that information in your documents" when the answer isn't in the context</li>
+  <li>Maintain conversational continuity using the last 10 messages of <code>chatHistory</code></li>
+</ol>
+
+<h2>Chat endpoint — request &amp; response</h2>
+<pre><code>POST /chat
+Content-Type: application/json
+
+{
+  "message":        "What is my IBS score and what does it mean?",
+  "conversationId": "uuid-...",
+  "chatHistory": [
+    { "role": "user",      "content": "..." },
+    { "role": "assistant", "content": "..." }
+  ]
+}
+
+Response 200:
+{
+  "response":        "Your IBS score is 72/100, which indicates ...",
+  "sources":         ["gut_report.pdf"],
+  "chunks_used":     5,
+  "documents_used":  1,
+  "status":          "success"
+}</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Chat History Fix</div>
+  Prior to the audit, the frontend was sending <code>files</code> as the key name
+  instead of <code>chatHistory</code>. This meant follow-up questions and conversation
+  context had never worked. Fixed in <code>App.jsx</code>.
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 7. INFERENCE ENGINE & QUERY ROUTING                               -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">7. Inference Engine &amp; Query Routing</h1>
+
+<p>
+  Before any vector search, every chat message is classified by <code>InferenceEngine.classify()</code>
+  (in <code>llm_config.py</code>). This routing step prevents wasteful FAISS searches for questions that
+  have nothing to do with the uploaded documents.
+</p>
+
+<h2>Query strategies</h2>
+<table>
+  <thead><tr><th>Strategy</th><th>Triggers on</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>greeting</code></td>
+      <td>"Hi", "Hello", "How are you?"</td>
+      <td>LLM only — no FAISS search</td>
+    </tr>
+    <tr>
+      <td><code>out_of_domain</code></td>
+      <td>Non-health topics (politics, sports, coding, etc.)</td>
+      <td>LLM-only polite redirect — no FAISS search</td>
+    </tr>
+    <tr>
+      <td><code>general_medical</code> (no doc)</td>
+      <td>General health question, no document uploaded</td>
+      <td>LLM answers from training data — no FAISS search</td>
+    </tr>
+    <tr>
+      <td><code>document_query</code></td>
+      <td>Question clearly about the uploaded report</td>
+      <td>FAISS search → context → LLM</td>
+    </tr>
+    <tr>
+      <td><code>hybrid</code></td>
+      <td>Combines personal report data + general medical knowledge</td>
+      <td>FAISS search → context → LLM</td>
+    </tr>
+    <tr>
+      <td><code>follow_up</code></td>
+      <td>Short pronoun-based reply to prior message ("What does that mean?")</td>
+      <td>FAISS search with prior context → LLM</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  The engine also uses <code>chat_history</code> to disambiguate follow-up questions — if the previous
+  exchange was about a specific test result, a follow-up like "Is that normal?" is correctly treated
+  as a document query.
+</p>
+
+
+<!-- ================================================================ -->
+<!-- 8. SECURITY GUARD                                                 -->
+<!-- ================================================================ -->
+<h1 class="section-title">8. Security Guard</h1>
+
+<p>
+  All user messages pass through <code>SecurityGuard.check()</code> before any processing.
+  It detects prompt injection, jailbreak attempts, and harmful content.
+</p>
+<ul>
+  <li>Runs before FAISS search and before any LLM call</li>
+  <li>Returns <code>{ "safe": false }</code> for flagged input — request is answered with a soft refusal</li>
+  <li>Returns a sanitised version of the message when input is clean</li>
+  <li>Flagged inputs are logged server-side with the conversation ID for audit</li>
+  <li>The soft refusal response is indistinguishable from a normal response to the user (no error code), preventing information leakage about the filter</li>
+</ul>
+
+
+<!-- ================================================================ -->
+<!-- 9. MULTI-DOCUMENT MANAGEMENT                                      -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">9. Multi-Document Management</h1>
+
+<p>
+  A single conversation can have multiple PDFs. Users can toggle which documents are active
+  for any given question, and remove documents they no longer need.
+</p>
+
+<h2>How selection works</h2>
+<ol>
+  <li>Each document has a boolean <code>selected</code> flag (default <code>true</code>)</li>
+  <li>When the user toggles a document, <code>POST /manage-documents</code> updates the flag</li>
+  <li>The backend immediately rebuilds <code>combined_index</code> using only the selected documents</li>
+  <li>All subsequent queries search only the active selection</li>
+</ol>
+
+<h2>Combined FAISS index rebuild</h2>
+<pre><code>def rebuild_combined_index(conv_data):
+    # Iterates selected documents in stable order (sorted by doc_id)
+    # Encodes all their chunks together
+    # Creates a single IndexFlatL2 with a global chunk→(doc_id, local_idx) mapping
+    # This mapping is used to attribute each retrieved chunk back to its source file</code></pre>
+
+<h2>Document Manager UI</h2>
+<ul>
+  <li>Compact collapsed state by default — shows count badge and number of active docs</li>
+  <li>Expands on click to show full list with checkboxes, filename, chunk count, file size</li>
+  <li>Checkbox toggle triggers optimistic UI update — immediately reflects the change, reverts on API failure</li>
+  <li>Remove button asks for confirmation, then removes the document and rebuilds the index</li>
+  <li>Error states auto-clear after 4 seconds</li>
+</ul>
+
+<h2>Document list endpoint</h2>
+<pre><code>POST /documents
+{ "conversationId": "uuid-..." }
+
+Response:
+{
+  "documents": [
+    { "id": "doc-uuid", "filename": "report.pdf", "size": 18432,
+      "selected": true, "chunks": 37 }
+  ]
+}</code></pre>
+
+
+<!-- ================================================================ -->
+<!-- 10. CONVERSATION ISOLATION                                        -->
+<!-- ================================================================ -->
+<h1 class="section-title">10. Conversation Isolation</h1>
+
+<p>
+  Every browser tab generates a unique <code>conversationId</code> (UUID v4) on page load.
+  All backend operations are keyed by this ID.
+</p>
+
+<ul>
+  <li>User A's FAISS index, document chunks, and chat history are in a separate dict key from User B's</li>
+  <li>Conversations cannot read, write, or interfere with each other</li>
+  <li>The isolation can be verified at runtime via <code>POST /debug/isolation-check</code></li>
+  <li>Conversations persist until the Gunicorn worker is restarted (e.g., after 500 requests via <code>max_requests</code>) — there is intentionally no cross-session persistence</li>
+</ul>
+
+<div class="callout warning">
+  <div class="callout-title">Memory Growth Note</div>
+  <code>conversation_indices</code> has no TTL eviction policy. Each conversation occupies RAM
+  proportional to the total size of its document chunks. On a t3.large (8 GB) with the
+  <code>MemoryMax=4G</code> systemd ceiling, ~200–300 simultaneous live conversations is a safe
+  upper bound before the worker is automatically killed and restarted by systemd.
+  The <code>max_requests=500</code> Gunicorn setting provides a periodic memory-flush.
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 11. FRONTEND FEATURES                                             -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">11. Frontend Application Features</h1>
+
+<h2>Conversation sidebar</h2>
+<ul>
+  <li>Unlimited conversations, each with its own title, message history, and file list</li>
+  <li>Title auto-set from the first 50 characters of the first user message</li>
+  <li>Conversations persisted to <code>localStorage</code> — survive page refresh</li>
+  <li>Delete conversation button removes from state and localStorage</li>
+  <li>Sidebar collapses automatically on mobile (≤768 px viewport)</li>
+</ul>
+
+<h2>Chat interface</h2>
+<ul>
+  <li>Markdown rendering — assistant responses support bold, italic, lists, code blocks via <code>react-markdown</code></li>
+  <li>Auto-scroll to latest message</li>
+  <li>Send with <kbd>Enter</kbd>, newline with <kbd>Shift+Enter</kbd></li>
+  <li>Send button disabled while loading or uploading</li>
+  <li>System messages (upload success/failure) displayed inline in the chat timeline</li>
+  <li>Chat history (last 10 messages) sent with every request for conversational continuity</li>
+</ul>
+
+<h2>Upload zone</h2>
+<ul>
+  <li>Full drag-and-drop support (DragEvent API)</li>
+  <li>Real-time upload progress bar (0–100%)</li>
+  <li>Client-side validation before upload: MIME type + 50 MB size check</li>
+  <li>After upload: compact "Add Another Document" button replaces the large upload zone</li>
+</ul>
+
+<h2>Offline detection</h2>
+<ul>
+  <li>Listens to <code>window.addEventListener('online'/'offline')</code></li>
+  <li>Red banner appears at top when offline</li>
+  <li>Send and upload buttons disabled when offline</li>
+  <li>API client also checks <code>navigator.onLine</code> before every request</li>
+</ul>
+
+<h2>Error handling</h2>
+<ul>
+  <li>Global error banner with dismiss button for top-level errors</li>
+  <li>React <code>ErrorBoundary</code> catches render errors without a white-screen crash</li>
+  <li>All API calls have automatic retry with exponential backoff (configurable per endpoint)</li>
+  <li>Request deduplication — identical concurrent requests share a single in-flight promise</li>
+</ul>
+
+
+<!-- ================================================================ -->
+<!-- 12. API CLIENT                                                    -->
+<!-- ================================================================ -->
+<h1 class="section-title">12. API Client &amp; Request Layer</h1>
+
+<p>
+  <code>frontend/src/services/apiClient.js</code> is the production API client used by all components.
+  It wraps axios with several enterprise-grade features.
+</p>
+
+<h2>Features</h2>
+<table>
+  <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Retry with exponential backoff</td><td>Up to 3 retries (configurable), delay doubles: 1 s → 2 s → 4 s</td></tr>
+    <tr><td>Request deduplication</td><td>Identical concurrent POSTs share one promise; second caller gets same result</td></tr>
+    <tr><td>Response caching</td><td>Optional per-request cache with TTL — disabled for chat/upload by default</td></tr>
+    <tr><td>Offline guard</td><td>Immediately throws "No internet connection" when offline</td></tr>
+    <tr><td>Input sanitisation</td><td>Strips <code>&lt;&gt;</code> characters from string fields before transmission</td></tr>
+    <tr><td>FormData upload</td><td>Separate <code>postFormData()</code> method with progress callback</td></tr>
+    <tr><td>Pending count</td><td><code>getPendingCount()</code> exposed to Header component for UI feedback</td></tr>
+  </tbody>
+</table>
+
+<h2>Routing in development vs. production</h2>
+<table>
+  <thead><tr><th>Environment</th><th>VITE_API_URL</th><th>How it works</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Local dev (<code>npm run dev</code>)</td>
+      <td><code>http://localhost:8000</code></td>
+      <td>Direct fetch to Flask dev server; Vite proxy not needed but available</td>
+    </tr>
+    <tr>
+      <td>Production build</td>
+      <td><code>/api</code></td>
+      <td>Relative URL — all calls become <code>/api/chat</code>, <code>/api/upload</code> etc. Nginx rewrites prefix and proxies to Gunicorn on port 8000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- ================================================================ -->
+<!-- 13. API REFERENCE                                                 -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">13. REST API Endpoints</h1>
+
+<table>
+  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>POST</code></td><td><code>/upload</code></td><td>Upload and index a PDF</td></tr>
+    <tr><td><code>POST</code></td><td><code>/chat</code></td><td>Send a message, get RAG response</td></tr>
+    <tr><td><code>POST</code></td><td><code>/documents</code></td><td>List documents for a conversation</td></tr>
+    <tr><td><code>POST</code></td><td><code>/manage-documents</code></td><td>Toggle document selection (active/inactive)</td></tr>
+    <tr><td><code>POST</code></td><td><code>/remove-document</code></td><td>Permanently remove a document</td></tr>
+    <tr><td><code>POST</code></td><td><code>/debug/isolation-check</code></td><td>Inspect session state for a conversation ID</td></tr>
+    <tr><td><code>OPTIONS</code></td><td><code>/chat</code></td><td>CORS preflight handler</td></tr>
+  </tbody>
+</table>
+
+<h3>POST /manage-documents</h3>
+<pre><code>Request:  { "conversationId": "uuid", "docId": "uuid", "selected": true | false }
+Response: { "message": "Document selection updated", "docId": "...", "selected": true, "selectedCount": 2 }</code></pre>
+
+<h3>POST /remove-document</h3>
+<pre><code>Request:  { "conversationId": "uuid", "docId": "uuid" }
+Response: { "message": "Document removed successfully", "docId": "...", "remainingDocuments": 1 }</code></pre>
+
+<h3>POST /debug/isolation-check</h3>
+<pre><code>Request:  { "conversationId": "uuid" }
+Response: {
+  "conversation_id": "uuid",
+  "exists": true,
+  "documents_count": 2,
+  "selected_documents_count": 1,
+  "mapping_status": "74 chunk mappings",
+  "total_conversations": 5,
+  "documents": [ { "doc_id": "3f8a1c9e...", "filename": "report.pdf",
+                   "chunks": 37, "selected": true } ]
+}</code></pre>
+
+<div class="callout warning">
+  <div class="callout-title">Security Note</div>
+  The <code>/debug/isolation-check</code> endpoint should be removed or gated behind auth
+  before making the deployment publicly accessible to untrusted users.
+  It exposes internal session metadata.
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 14. LOCAL DEVELOPMENT                                             -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">14. Local Development Setup</h1>
+
+<h2>Prerequisites</h2>
+<ul>
+  <li>Python 3.10+</li>
+  <li>Node.js 18+ and npm</li>
+  <li>AWS credentials with Bedrock <code>InvokeModel</code> permission</li>
+</ul>
+
+<h2>Backend</h2>
+<pre><code>cd virviai-iom-bioworks-gutbotprod/backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate
+# Windows:  venv\Scripts\activate
+# macOS/Linux:  source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure credentials
+cp .env.example .env
+# Edit .env: fill in AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
+
+# Start the Flask server on port 8000
+python app.py</code></pre>
+
+<h2>Frontend</h2>
+<pre><code>cd frontend
+
+npm install
+npm run dev
+# App available at http://localhost:5173</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Vite Proxy</div>
+  <code>vite.config.js</code> proxies all <code>/api</code> requests to
+  <code>http://localhost:8000</code> during development, so you can use
+  <code>VITE_API_URL=/api</code> in both dev and prod without changing any code.
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 15. EC2 PRODUCTION DEPLOYMENT                                     -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">15. EC2 Production Deployment</h1>
+
+<h2>Recommended instance sizes</h2>
+<table>
+  <thead><tr><th>Instance</th><th>vCPU</th><th>RAM</th><th>Users</th><th>MemoryMax setting</th></tr></thead>
+  <tbody>
+    <tr><td>t3.medium</td><td>2</td><td>4 GB</td><td>~30</td><td>2G</td></tr>
+    <tr><td>t3.large</td><td>2</td><td>8 GB</td><td>~60</td><td>4G</td></tr>
+    <tr><td>t3.xlarge</td><td>4</td><td>16 GB</td><td>~100</td><td>8G</td></tr>
+  </tbody>
+</table>
+
+<h2>Directory structure on EC2</h2>
+<pre><code>/home/ubuntu/gutbot/           ← backend repo (virviai-iom-bioworks-gutbotprod)
+├── backend/
+├── ec2-files/
+├── frontend/                  ← frontend repo (uploaded separately)
+│   └── dist/                  ← built static files (npm run build)
+└── EC2_SETUP_GUIDE.md</code></pre>
+
+<h2>One-shot deployment (after EC2 is configured)</h2>
+<pre><code># 1. Edit ec2-files/nginx-gutbot — set your EC2 IP:
+#    server_name 54.123.45.67;
+
+# 2. Edit backend/.env — fill in real AWS credentials
+
+# 3. Run the deploy script:
+cd /home/ubuntu/gutbot
+chmod +x ec2-files/deploy.sh
+./ec2-files/deploy.sh</code></pre>
+
+<p>The deploy script performs all 9 steps automatically:</p>
+<ol>
+  <li>Pre-flight checks (credentials, IP set, venv exists)</li>
+  <li>Create <code>/var/log/gutbot/</code> log directory</li>
+  <li>Install and enable systemd service</li>
+  <li>Install Nginx main config (backs up original)</li>
+  <li>Install Nginx site config, enable site, remove default</li>
+  <li>Test Nginx config syntax (<code>nginx -t</code>)</li>
+  <li>Set <code>.env</code> file permissions to 600</li>
+  <li>Start Gunicorn service and reload Nginx</li>
+  <li>Live health check — curl to verify backend is responding</li>
+</ol>
+
+<h2>SSH safety under load</h2>
+<p>The systemd service is configured to protect SSH access even under full load:</p>
+<ul>
+  <li><code>CPUQuota=75%</code> — GutBot cannot consume more than 75% CPU; SSH always has headroom</li>
+  <li><code>MemoryMax=4G</code> (adjust per instance) — hard RAM ceiling</li>
+  <li><code>MemorySwapMax=0</code> — disables swap; process is killed rather than degrading indefinitely</li>
+  <li><code>OOMScoreAdjust=300</code> — GutBot is killed by the OOM killer before <code>sshd</code></li>
+  <li><code>Restart=on-failure</code> — auto-restarts within 5 seconds after a crash</li>
+  <li><code>WantedBy=multi-user.target</code> — auto-starts after every reboot</li>
+</ul>
+
+<h2>Nginx rate limiting</h2>
+<table>
+  <thead><tr><th>Zone</th><th>Rate</th><th>Burst</th><th>Applies to</th></tr></thead>
+  <tbody>
+    <tr><td>api_limit</td><td>10 req/s per IP</td><td>20</td><td>/chat, /documents, etc.</td></tr>
+    <tr><td>upload_limit</td><td>2 req/s per IP</td><td>5</td><td>/upload</td></tr>
+    <tr><td>conn_limit</td><td>10 connections per IP</td><td>—</td><td>All API endpoints</td></tr>
+  </tbody>
+</table>
+
+<h2>HTTPS (optional but recommended)</h2>
+<pre><code># After pointing a domain to your EC2 IP:
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d gutbot.yourdomain.com
+# Certbot auto-generates and inserts the HTTPS config block
+# Auto-renewal: sudo systemctl enable certbot.timer</code></pre>
+
+
+<!-- ================================================================ -->
+<!-- 16. CONFIGURATION REFERENCE                                       -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">16. Configuration Reference</h1>
+
+<h2>backend/.env — all fields</h2>
+<table>
+  <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>LLM_BACKEND</code></td><td><code>bedrock</code></td><td><code>bedrock</code> or <code>llama</code></td></tr>
+    <tr><td><code>AWS_REGION</code></td><td><code>ap-south-1</code></td><td>AWS region for Bedrock</td></tr>
+    <tr><td><code>AWS_ACCESS_KEY_ID</code></td><td><em>(required)</em></td><td>IAM user key</td></tr>
+    <tr><td><code>AWS_SECRET_ACCESS_KEY</code></td><td><em>(required)</em></td><td>IAM user secret</td></tr>
+    <tr><td><code>BEDROCK_MODEL_ID</code></td><td><code>mistral.mistral-7b-instruct-v0:2</code></td><td>LLM model to use</td></tr>
+    <tr><td><code>BEDROCK_MAX_TOKENS</code></td><td><code>512</code></td><td>Max response tokens</td></tr>
+    <tr><td><code>BEDROCK_TEMPERATURE</code></td><td><code>0.2</code></td><td>Lower = more factual</td></tr>
+    <tr><td><code>EMBEDDING_MODEL</code></td><td><code>sentence-transformers/all-MiniLM-L6-v2</code></td><td>HuggingFace embedding model</td></tr>
+    <tr><td><code>FLASK_ENV</code></td><td><code>development</code></td><td>Set to <code>production</code> on EC2</td></tr>
+    <tr><td><code>EC2_DOMAIN</code></td><td><em>(empty)</em></td><td>EC2 IP or domain for CORS whitelist</td></tr>
+    <tr><td><code>REQUEST_TIMEOUT</code></td><td><code>30</code></td><td>Bedrock request timeout (seconds)</td></tr>
+  </tbody>
+</table>
+
+<h2>frontend/.env.production (built-in)</h2>
+<pre><code>VITE_API_URL=/api</code></pre>
+<p>All production API calls are relative (<code>/api/chat</code>, <code>/api/upload</code>).
+Nginx strips the <code>/api</code> prefix and forwards to Gunicorn on port 8000.</p>
+
+<h2>ec2-files/gunicorn.conf.py — key settings</h2>
+<table>
+  <thead><tr><th>Setting</th><th>Value</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td><code>workers</code></td><td><code>1</code></td><td>Session isolation requirement</td></tr>
+    <tr><td><code>worker_class</code></td><td><code>gevent</code></td><td>Non-blocking async concurrency</td></tr>
+    <tr><td><code>worker_connections</code></td><td><code>100</code></td><td>100 simultaneous greenlets</td></tr>
+    <tr><td><code>timeout</code></td><td><code>120</code></td><td>Allow time for large PDF embedding</td></tr>
+    <tr><td><code>max_requests</code></td><td><code>500</code></td><td>Periodic worker restart to prevent RAM leaks</td></tr>
+    <tr><td><code>max_requests_jitter</code></td><td><code>50</code></td><td>Staggers restarts to avoid traffic spike</td></tr>
+    <tr><td><code>preload_app</code></td><td><code>True</code></td><td>Loads embedding model once at startup</td></tr>
+    <tr><td><code>bind</code></td><td><code>127.0.0.1:8000</code></td><td>Localhost only — never exposed to internet</td></tr>
+  </tbody>
+</table>
+
+<h2>Required AWS IAM permissions</h2>
+<pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect":   "Allow",
+    "Action":   ["bedrock:InvokeModel"],
+    "Resource": "arn:aws:bedrock:ap-south-1::foundation-model/*"
+  }]
+}</code></pre>
+
+
+<!-- ================================================================ -->
+<!-- 17. BUG FIXES                                                     -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">17. Bug Fixes Implemented</h1>
+
+<p>The following bugs were identified and fixed during the production audit:</p>
+
+<h2>Bug 1 — Chat history never sent to backend <span class="badge badge-fix">CRITICAL</span></h2>
+<p><strong>File:</strong> <code>frontend/src/App.jsx</code><br/>
+<strong>Problem:</strong> The <code>/chat</code> payload used the key <code>files</code> instead of <code>chatHistory</code>.
+The backend reads <code>data.get("chatHistory", [])</code>. This meant every message was treated as a
+standalone question — follow-up questions and conversation context never worked at all.</p>
+<pre><code>// BEFORE (broken):
+await apiClient.post("/chat", {
+  message: message.trim(),
+  conversationId: currentConversationId,
+  files: currentConversation?.files || [],   // ← wrong key
+});
+
+// AFTER (fixed):
+const chatHistory = (currentConversation?.messages || [])
+  .filter((m) => m.role === "user" || m.role === "assistant")
+  .slice(-10)
+  .map((m) => ({ role: m.role, content: m.content }));
+
+await apiClient.post("/chat", {
+  message: message.trim(),
+  conversationId: currentConversationId,
+  chatHistory,    // ← correct key, correct structure
+});</code></pre>
+
+<h2>Bug 2 — Wrong port throughout frontend <span class="badge badge-fix">HIGH</span></h2>
+<p><strong>Files:</strong> <code>.env</code>, <code>.env.example</code>, <code>vite.config.js</code>, <code>services/apiClient.js</code>, <code>utils/api.js</code><br/>
+<strong>Problem:</strong> All fallback URLs used port <code>5000</code>. The Flask backend runs on port <code>8000</code>.
+Any time <code>VITE_API_URL</code> was unset, all API calls silently went to the wrong port.</p>
+<pre><code>// BEFORE (broken in 5 files):
+"http://localhost:5000"
+
+// AFTER (fixed):
+"http://localhost:8000"</code></pre>
+
+<h2>Bug 3 — Production API 404 for all requests <span class="badge badge-fix">HIGH</span></h2>
+<p><strong>File:</strong> <code>ec2-files/nginx-gutbot</code><br/>
+<strong>Problem:</strong> The production frontend sets <code>VITE_API_URL=/api</code>, so all calls become
+<code>/api/chat</code>, <code>/api/upload</code>, etc. The original Nginx config only matched <code>/chat</code>
+and <code>/upload</code> — every production request returned 404 or fell through to the React SPA.</p>
+<pre><code># BEFORE (broken):
+location /upload { proxy_pass http://gutbot_backend; }
+location /chat   { proxy_pass http://gutbot_backend; }
+
+# AFTER (handles both /upload and /api/upload):
+location ~ ^(/api)?/upload$ {
+    rewrite ^/api(/.*) $1 break;
+    proxy_pass http://gutbot_backend;
+}
+location ~ ^(/api)?/(chat|documents|manage-documents|remove-document|debug) {
+    rewrite ^/api(/.*) $1 break;
+    proxy_pass http://gutbot_backend;
+}</code></pre>
+
+<h2>Bug 4 — DocumentManager error retry wiped all app state <span class="badge badge-fix">MEDIUM</span></h2>
+<p><strong>File:</strong> <code>frontend/src/components/DocumentManager.jsx</code><br/>
+<strong>Problem:</strong> When fetching the document list failed, the retry button called
+<code>window.location.reload()</code> — a full page reload that wiped all conversations, messages,
+and files from React state and localStorage was never committed back.</p>
+<pre><code>// BEFORE (broken):
+const handleRetryFetch = () => {
+  setError(null);
+  window.location.reload();   // ← nukes everything
+};
+
+// AFTER (just refetches documents):
+const fetchDocumentsRef = useRef(null);
+fetchDocumentsRef.current = fetchDocuments;
+
+const handleRetryFetch = useCallback(() => {
+  setError(null);
+  fetchDocumentsRef.current?.();   // ← only refetches document list
+}, []);</code></pre>
+
+<h2>Bug 5 — start.sh pointed to deleted file and wrong port <span class="badge badge-fix">MEDIUM</span></h2>
+<p><strong>File:</strong> <code>backend/start.sh</code><br/>
+<strong>Problem:</strong> The launch script called <code>gunicorn app_enhanced:app --port 5000</code>.
+<code>app_enhanced.py</code> had been deleted; port 5000 was wrong. The backend could not be started via this script.</p>
+<pre><code># BEFORE (broken):
+gunicorn app_enhanced:app --bind 0.0.0.0:5000
+
+# AFTER (fixed):
+gunicorn app:app --bind 127.0.0.1:8000 \
+  --worker-class gevent --workers 1 \
+  -c gunicorn.conf.py</code></pre>
+
+<h2>Bug 6 — Duplicate null check in DocumentManager <span class="badge badge-fix">LOW</span></h2>
+<p><strong>File:</strong> <code>frontend/src/components/DocumentManager.jsx</code><br/>
+<strong>Problem:</strong> The early-return <code>if (documents.length === 0 &amp;&amp; !isLoading) return null;</code>
+appeared twice — once at line 143 and again at line 160. The second check was dead code after
+JSX refactoring.</p>
+
+
+<!-- ================================================================ -->
+<!-- 18. SECURITY HARDENING                                            -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">18. Security Hardening</h1>
+
+<h2>Fix 1 — Path traversal vulnerability <span class="badge badge-sec">SECURITY</span></h2>
+<p><strong>File:</strong> <code>backend/app.py — /upload</code><br/>
+<strong>Problem:</strong> <code>file.filename</code> was used directly in <code>os.path.join(UPLOAD_FOLDER, file.filename)</code>.
+An attacker could upload a file named <code>../../etc/passwd</code> or <code>../app.py</code>
+to overwrite arbitrary files on the server.</p>
+<pre><code># BEFORE (vulnerable):
+filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+
+# AFTER (safe):
+from werkzeug.utils import secure_filename
+safe_name = secure_filename(file.filename)
+if not safe_name:
+    return jsonify({"error": "Invalid filename"}), 400
+filepath = os.path.join(UPLOAD_FOLDER, safe_name)</code></pre>
+
+<h2>Fix 2 — CORS production whitelist silently overridden <span class="badge badge-sec">SECURITY</span></h2>
+<p><strong>File:</strong> <code>backend/app.py — after_request hook</code><br/>
+<strong>Problem:</strong> A global <code>@app.after_request</code> hook unconditionally added
+<code>Access-Control-Allow-Origin: *</code> to every response, overriding the carefully built
+production whitelist in <code>flask-cors</code>. Any origin could read the API in production.</p>
+<pre><code># BEFORE (overrides CORS in production):
+@app.after_request
+def after_request(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"   # ← always
+    ...
+
+# AFTER (only in development):
+@app.after_request
+def after_request(response):
+    if os.getenv("FLASK_ENV") != "production":
+        response.headers["Access-Control-Allow-Origin"] = "*"
+    # Production: flask-cors already set the correct whitelist header
+    ...</code></pre>
+
+<h2>Fix 3 — Nginx Security Headers <span class="badge badge-sec">SECURITY</span></h2>
+<p>The Nginx site config adds the following headers to all responses:</p>
+<ul>
+  <li><code>X-Content-Type-Options: nosniff</code> — prevents MIME-type sniffing</li>
+  <li><code>X-Frame-Options: DENY</code> — prevents clickjacking iframes</li>
+  <li><code>X-XSS-Protection: 1; mode=block</code> — legacy XSS filter in older browsers</li>
+  <li><code>Referrer-Policy: no-referrer</code> — prevents leaking URL in Referer header</li>
+</ul>
+
+<h2>Fix 4 — File permissions on .env <span class="badge badge-sec">SECURITY</span></h2>
+<p>
+  The deploy script sets <code>chmod 600 backend/.env</code> — readable only by the owning
+  user (<code>ubuntu</code>), not by other system users or the web server process.
+</p>
+
+<h2>Fix 5 — Gunicorn not exposed to internet</h2>
+<p>
+  Gunicorn binds to <code>127.0.0.1:8000</code> (loopback only).
+  The EC2 Security Group does not open port 8000 to the public.
+  Only Nginx (on port 80/443) is internet-facing, and it rate-limits all requests before forwarding.
+</p>
+
+<h2>Fix 6 — Frontend input sanitisation</h2>
+<p>
+  <code>apiClient.js</code> strips <code>&lt;</code> and <code>&gt;</code> from all string fields
+  before transmission to prevent reflected XSS via API responses rendered as HTML.
+  The <code>SecurityGuard</code> in the backend provides a second layer of prompt-injection filtering.
+</p>
+
+
+<!-- ================================================================ -->
+<!-- 19. PRODUCTION READINESS ASSESSMENT                               -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">19. Production Readiness Assessment</h1>
+
+<p>This section is the result of a full end-to-end audit performed on the codebase.</p>
+
+<h2>Summary verdict</h2>
+<div class="callout success">
+  <div class="callout-title">Ready for Production</div>
+  All critical bugs and security issues have been resolved. The deployment infrastructure
+  (Nginx, Gunicorn, systemd) is production-grade. Two manual steps remain before
+  running <code>deploy.sh</code>: set the EC2 IP in <code>nginx-gutbot</code>
+  and fill in real AWS credentials in <code>backend/.env</code>.
+</div>
+
+<h2>What is ready</h2>
+<table>
+  <thead><tr><th>Area</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Backend Flask/FAISS/Bedrock core</td><td>✅ Correct and working</td></tr>
+    <tr><td>Medical document validation</td><td>✅ Implemented and tested</td></tr>
+    <tr><td>Path traversal vulnerability</td><td>✅ Fixed — secure_filename enforced</td></tr>
+    <tr><td>CORS production override</td><td>✅ Fixed — whitelist no longer bypassed</td></tr>
+    <tr><td>Chat history / conversational context</td><td>✅ Fixed — correct key, correct structure</td></tr>
+    <tr><td>Frontend port mismatches</td><td>✅ Fixed in all 5 files</td></tr>
+    <tr><td>Production Nginx routing (/api/* prefix)</td><td>✅ Fixed — regex location blocks with rewrite</td></tr>
+    <tr><td>EC2 systemd service (auto-start, SSH-safe)</td><td>✅ Production-grade config included</td></tr>
+    <tr><td>Nginx rate limiting, gzip, caching</td><td>✅ Configured</td></tr>
+    <tr><td>start.sh launch script</td><td>✅ Fixed — correct file, correct port</td></tr>
+    <tr><td>DocumentManager retry crash</td><td>✅ Fixed — no full-page reload</td></tr>
+    <tr><td>AWS credentials scrubbed</td><td>✅ Only placeholders in repo</td></tr>
+    <tr><td>Junk and test files removed</td><td>✅ Cleaned</td></tr>
+    <tr><td>Deployment documentation</td><td>✅ README, ARCHITECTURE, RUN_GUIDE, EC2_SETUP_GUIDE</td></tr>
+  </tbody>
+</table>
+
+<h2>Two steps before deploy.sh</h2>
+<ol>
+  <li>
+    <strong>Set EC2 IP in <code>ec2-files/nginx-gutbot</code>:</strong><br/>
+    <code>server_name YOUR_EC2_IP_OR_DOMAIN;</code> → <code>server_name 54.x.x.x;</code>
+  </li>
+  <li>
+    <strong>Fill credentials in <code>backend/.env</code>:</strong><br/>
+    Replace <code>YOUR_AWS_ACCESS_KEY_ID</code> and <code>YOUR_AWS_SECRET_ACCESS_KEY</code>
+    with real values.
+  </li>
+</ol>
+<p>After that: <code>./ec2-files/deploy.sh</code> handles everything automatically.</p>
+
+
+<!-- ================================================================ -->
+<!-- 20. KNOWN LIMITATIONS                                             -->
+<!-- ================================================================ -->
+<h1 class="section-title page-break">20. Known Limitations &amp; Future Work</h1>
+
+<h2>Limitations in current version</h2>
+
+<h3>1. In-memory session store (no TTL)</h3>
+<p>
+  <code>conversation_indices</code> grows unbounded. Each active conversation holds all chunk
+  embeddings in RAM. On a long-running instance, this will accumulate over time.
+  The <code>max_requests=500</code> Gunicorn setting provides a periodic flush (worker restart),
+  but idle conversations are not evicted between flushes.
+</p>
+<p><strong>Mitigation already in place:</strong> <code>max_requests=500</code>, <code>MemoryMax</code> systemd ceiling</p>
+<p><strong>Future fix:</strong> Add a TTL using <code>threading.Timer</code> or switch to Redis for session storage</p>
+
+<h3>2. PDF text extraction quality</h3>
+<p>
+  PyPDF2 extracts raw text. Scanned PDFs (image-only), PDFs with complex column layouts,
+  or PDFs with non-standard encoding may produce garbled or empty text.
+</p>
+<p><strong>Future fix:</strong> Add OCR fallback using <code>pytesseract</code> or AWS Textract for image PDFs</p>
+
+<h3>3. No user authentication</h3>
+<p>
+  There is no login, no access control, and no persistent user accounts.
+  <code>conversationId</code> is generated client-side — anyone who knows a UUID can query
+  that session's documents.
+</p>
+<p><strong>Future fix:</strong> Add JWT authentication or AWS Cognito</p>
+
+<h3>4. Chunk overlap</h3>
+<p>
+  Text is split into 500-character non-overlapping chunks. A sentence that straddles a
+  chunk boundary may be split in half, reducing retrieval accuracy for those passages.
+</p>
+<p><strong>Future fix:</strong> Use LangChain's <code>RecursiveCharacterTextSplitter</code> with 50–100 character overlap</p>
+
+<h3>5. Debug endpoint is public</h3>
+<p>
+  <code>POST /debug/isolation-check</code> exposes internal session metadata. Acceptable for
+  internal testing, but should be removed or gated behind auth before a public launch.
+</p>
+
+<h3>6. Single region AWS Bedrock</h3>
+<p>
+  The app is locked to <code>ap-south-1</code> by default. If Bedrock has an outage in that
+  region, the entire chatbot goes down.
+</p>
+<p><strong>Future fix:</strong> Implement a fallback region in <code>llm_config.py</code></p>
+
+<h2>Possible enhancements</h2>
+<ul>
+  <li>Streaming responses — Bedrock supports streaming; implementing it would show tokens as they arrive</li>
+  <li>Multi-modal support — accept DOCX, images of reports via AWS Textract</li>
+  <li>Source highlighting — highlight the exact sentence in the PDF that was retrieved</li>
+  <li>Session persistence — save conversation history and documents to DynamoDB or S3</li>
+  <li>Feedback loop — thumbs up/down on responses to fine-tune the retrieval strategy</li>
+  <li>Admin dashboard — view active sessions, document count, request volume</li>
+</ul>
+
+<hr/>
+
+<p style="text-align:center; color:#9ca3af; font-size:8.5pt; margin-top:32px;">
+  GutBot — Complete Technical Documentation · May 2026 · IOM BioWorks
+</p>
+
+</div><!-- .page-wrap -->
+</body>
+</html>

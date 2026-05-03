@@ -1,0 +1,74 @@
+[
+  {
+    "chunk_type": "score",
+    "category": "Sleep",
+    "metric": "Sleep Efficiency",
+    "current_value": "57%",
+    "optimised_value": "61%",
+    "report_scope": "SEnS",
+    "source_page": 7
+  },
+  {
+    "chunk_type": "score",
+    "category": "Sleep",
+    "metric": "Sleep Duration",
+    "current_value": "42%",
+    "optimised_value": "44%",
+    "report_scope": "SEnS",
+    "source_page": 7
+  },
+  {
+    "chunk_type": "score",
+    "category": "Sleep",
+    "metric": "Sleep Quality",
+    "current_value": "59%",
+    "optimised_value": "63%",
+    "report_scope": "SEnS",
+    "source_page": 7
+  },
+  {
+    "chunk_type": "score",
+    "category": "Stress",
+    "metric": "external demands.",
+    "current_value": "33%",
+    "optimised_value": "29%",
+    "report_scope": "SEnS",
+    "source_page": 8
+  },
+  {
+    "chunk_type": "score",
+    "category": "Stress",
+    "metric": "overwhelmed.",
+    "current_value": "39%",
+    "optimised_value": "39%",
+    "report_scope": "SEnS",
+    "source_page": 8
+  },
+  {
+    "chunk_type": "score",
+    "category": "Stress",
+    "metric": "disengagement.",
+    "current_value": "45%",
+    "optimised_value": "44%",
+    "report_scope": "SEnS",
+    "source_page": 8
+  },
+  {
+    "chunk_type": "score",
+    "category": "Energy",
+    "metric": "Available Energy",
+    "current_value": "50%",
+    "optimised_value": "50%",
+    "report_scope": "SEnS",
+    "source_page": 9
+  },
+  {
+    "chunk_type": "score",
+    "category": "Energy",
+    "metric": "to-day.",
+    "current_value": "44%",
+    "optimised_value": "41%",
+    "report_scope": "SEnS",
+    "source_page": 9
+  }
+]
